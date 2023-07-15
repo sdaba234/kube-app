@@ -16,9 +16,10 @@ spec:
     spec:
       containers:
         - name: vprodb
-          image: sdaba234/vprofiledb:V1
-#         args:
-#            - "--ignore-db-dir=lost+found"
+          image: vprofile/vprofiledb
+            #args:
+            #- "--ignore-db-dir"
+          #- "lost+found"
           volumeMounts:
             - mountPath: /var/lib/mysql
               name: vpro-db-data
@@ -35,9 +36,11 @@ spec:
         zone: us-east-1a
       volumes:
         - name: vpro-db-data
+          # This AWS EBS volume must already exist.
           awsElasticBlockStore:
             volumeID: vol-0848bda53596a817b
             fsType: ext4
+
       initContainers:
         - name: busybox
           image: busybox:latest
