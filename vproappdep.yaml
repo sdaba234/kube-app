@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: vproapp
-          image: sdaba234/vprofileapp:V1
+          image: sdaba234/vprofileapp
           ports:
             - name: vproapp-port
               containerPort: 8080
